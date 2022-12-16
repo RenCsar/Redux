@@ -1,6 +1,7 @@
+import { DashPokemons } from "../../components/DashDigimons";
 
 export const Lista = () => {
   return (
-    <div>Lista</div>
+    <DashPokemons />
   )
 }
