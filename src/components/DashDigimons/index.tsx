@@ -5,24 +5,26 @@ import { useDispatch, useSelector } from 'react-redux';
 import { mudarNome } from "../../store/Reducers/nomeSlice";
 import { TTema } from "../../util/types";
 import Tilt from 'react-parallax-tilt';
+import { getDigimon } from "../../store/Reducers/digimonSlice";
 
 export const DashPokemons = () => {
     const tema = useSelector((state: TTema) => state.tema.tema);
-    const dispatch = useDispatch();
+    const dispatch = useDispatch<any>();
     const [digimons, setDigimons] = useState<object[]>([]);
 
-    const getDigimon = async () => {
-        try {
-            const { data } = await axios.get('https://digimon-api.vercel.app/api/digimon');
-            setDigimons(data);
+    // const getDigimon = async () => {
+    //     try {
+    //         const { data } = await axios.get('https://digimon-api.vercel.app/api/digimon');
+    //         setDigimons(data);
 
-        } catch (error) {
-            console.error(error)
-        }
-    }
+    //     } catch (error) {
+    //         console.error(error)
+    //     }
+    // }
 
     useEffect(() => {
-        getDigimon()
+        // getDigimon()
+        dispatch(getDigimon())
     }, []);
 
     const selectDigimon = (digimon: string) => {

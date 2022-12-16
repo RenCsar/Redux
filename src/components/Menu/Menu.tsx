@@ -54,7 +54,7 @@ export default function AccountMen() {
                             aria-haspopup="true"
                             aria-expanded={open ? 'true' : undefined}
                         >
-                            <Avatar sx={{ width: 32, height: 32 }}>M</Avatar>
+                            <Avatar sx={{ width: 32, height: 32 }}>{usuario.substring(0, 1)}</Avatar>
                         </IconButton>
                     </Tooltip>
                     <Box sx={{ marginLeft: '20px' }}>
