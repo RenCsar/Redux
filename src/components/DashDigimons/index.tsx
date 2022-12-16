@@ -6,12 +6,6 @@ import { mudarNome } from "../../store/Reducers/nomeSlice";
 import { TTema } from "../../util/types";
 import Tilt from 'react-parallax-tilt';
 
-type TDigimon = {
-    name: string,
-    img: string,
-    level: string
-}
-
 export const DashPokemons = () => {
     const tema = useSelector((state: TTema) => state.tema.tema);
     const dispatch = useDispatch();
