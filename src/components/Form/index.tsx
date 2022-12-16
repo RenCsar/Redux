@@ -1,4 +1,4 @@
-import { Button, TextField } from '@mui/material'
+import { Button, OutlinedInput, TextField } from '@mui/material'
 import { Box } from '@mui/system'
 import React from 'react'
 import { useForm } from 'react-hook-form'
@@ -21,10 +21,24 @@ export const Form: React.FC = () => {
             sx={{
                 display: 'flex',
                 flexDirection: 'column',
-                gap: '10px'
+                gap: '10px',
+                padding: '50px',
+                border: `1px solid ${tema}`,
+                borderRadius: '5px'
             }}
         >
-            <TextField type="text" label='Usuário' id='nome' {...register('nome')} />
+            <TextField type="text" label='Usuário' id='nome' {...register('nome')} 
+            sx={{
+                '& .MuiOutlinedInput-root':{
+                    '&.Mui-focused fieldset': {
+                        borderColor: `${tema}`,                        
+                    }
+                },
+                '& label.Mui-focused': {
+                    color: `${tema}`,
+                  }
+            }}
+            />
             <Button type='submit' variant="contained"
                 sx={{
                     background: `${tema}`,
