@@ -3,7 +3,7 @@ import { Box } from '@mui/system'
 import React from 'react'
 import { useForm } from 'react-hook-form'
 import { useDispatch, useSelector } from 'react-redux/es/exports'
-import { mudarNome } from '../../store/Reducers/nomeSlice'
+import { mudarNome, setImg } from '../../store/Reducers/nomeSlice'
 import { TForm, TTema } from '../../util/types'
 
 export const Form: React.FC = () => {
@@ -12,7 +12,9 @@ export const Form: React.FC = () => {
     const { register, handleSubmit, reset } = useForm<TForm>()
 
     const handleChange = (data: TForm) => {
+        data.img = '';
         dispatch(mudarNome(data.nome))
+        dispatch(setImg(data.img))
         reset();
     }
 

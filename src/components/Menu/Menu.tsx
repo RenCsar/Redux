@@ -26,8 +26,10 @@ export default function AccountMen() {
         setAnchorEl(null);
     };
 
-    let usuario = useSelector((state: TNome) => state.nome.nome);
     let tema = useSelector((state: TTema) => state.tema.tema);
+    let usuario = useSelector((state: TNome) => state.nome.nome);
+    let imagem = useSelector((state: TNome) => state.nome.img);
+
     return (
         <MenuContainer>
             <Box sx={{ display: 'flex', alignItems: 'center', textAlign: 'center', justifyContent: 'space-between', backgroundColor: `${tema}`, padding: '0 50px', height: '50px' }}>
@@ -54,7 +56,10 @@ export default function AccountMen() {
                             aria-haspopup="true"
                             aria-expanded={open ? 'true' : undefined}
                         >
-                            <Avatar sx={{ width: 32, height: 32 }}>{usuario.substring(0, 1)}</Avatar>
+                            {imagem?
+                                <Avatar src={`${imagem}`} sx={{ width: 32, height: 32 }}></Avatar> : 
+                                <Avatar sx={{ width: 32, height: 32 }}>{usuario.substring(0, 1)}</Avatar>
+                            }
                         </IconButton>
                     </Tooltip>
                     <Box sx={{ marginLeft: '20px' }}>
@@ -119,8 +124,8 @@ export default function AccountMen() {
                 <MenuItem>
                     <ListItemIcon>
                         <Logout fontSize="small" />
-                    </ListItemIcon>                
-                        Logout                  
+                    </ListItemIcon>
+                    Logout
                 </MenuItem>
             </Menu>
         </MenuContainer>

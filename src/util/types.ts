@@ -1,5 +1,6 @@
 export type TForm ={
-    nome: string
+    nome: string,
+    img: string
 };
 
 export type TTema={
@@ -10,6 +11,7 @@ export type TTema={
 
 export type TNome = {
     nome: {
-        nome: string;
+        nome: string,
+        img: string
     };
 }

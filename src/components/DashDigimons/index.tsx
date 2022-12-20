@@ -1,34 +1,23 @@
 import { Box } from "@mui/material";
-import axios from "axios";
-import { useEffect, useState } from 'react';
+import { useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
-import { mudarNome } from "../../store/Reducers/nomeSlice";
+import { mudarNome, setImg } from "../../store/Reducers/nomeSlice";
 import { TTema } from "../../util/types";
 import Tilt from 'react-parallax-tilt';
 import { getDigimon } from "../../store/Reducers/digimonSlice";
 
 export const DashPokemons = () => {
     const tema = useSelector((state: TTema) => state.tema.tema);
+    const digimon = useSelector((state: any) => state.digimon.digimon)
     const dispatch = useDispatch<any>();
-    const [digimons, setDigimons] = useState<object[]>([]);
-
-    // const getDigimon = async () => {
-    //     try {
-    //         const { data } = await axios.get('https://digimon-api.vercel.app/api/digimon');
-    //         setDigimons(data);
-
-    //     } catch (error) {
-    //         console.error(error)
-    //     }
-    // }
 
     useEffect(() => {
-        // getDigimon()
         dispatch(getDigimon())
     }, []);
 
-    const selectDigimon = (digimon: string) => {
-        dispatch(mudarNome(digimon))
+    const selectDigimon = (digimon: any) => {
+        dispatch(mudarNome(digimon.name))
+        dispatch(setImg(digimon.img))
     }
 
     return (
@@ -42,9 +31,9 @@ export const DashPokemons = () => {
             padding: '0 40px',
             margin: '100px 0 50px 0',
         }}>
-            {digimons.map((digimon: any) =>
+            {digimon.map((digimon: any) =>
                 <Box key={digimon?.name}
-                    onClick={() => selectDigimon(digimon.name)}
+                    onClick={() => selectDigimon(digimon)}
                     sx={{
                         display: 'flex',
                         justifyContent: 'center',

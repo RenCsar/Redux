@@ -3,12 +3,14 @@ import { createSlice } from '@reduxjs/toolkit'
 const nomeSlice = createSlice({
     name: 'nome',
     initialState: {
-        nome: 'Usuário'
+        nome: 'Usuário',
+        img: ''
     },
     reducers: {
-        mudarNome: (state, action) => { state.nome = action.payload }
+        mudarNome: (state, action) => { state.nome = action.payload },
+        setImg: (state, action) => { state.img = action.payload }
     }
 });
 
 export const nomeReducer = nomeSlice.reducer;
-export const { mudarNome } = nomeSlice.actions;
+export const { mudarNome, setImg } = nomeSlice.actions;
