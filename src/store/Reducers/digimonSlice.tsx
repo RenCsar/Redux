@@ -15,7 +15,7 @@ const digimonSlice = createSlice({
     name: 'digimon',
     initialState: {
         digimon: [],
-        status: 'idle', // idle | loading | succeede | failed
+        status: 'loading', // idle | loading | succeede | failed
         error: ''
     },
     reducers: {},
